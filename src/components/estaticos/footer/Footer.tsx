@@ -1,9 +1,10 @@
 import React from "react";
 import InstagramIcon from "@material-ui/icons/Instagram";
-import FacebookIcon from "@material-ui/icons/Facebook";
+import GitHubIcon from "@material-ui/icons/GitHub";
 import LinkedInIcon from "@material-ui/icons/LinkedIn";
 import { Typography, Grid } from "@material-ui/core";
 import { Box } from "@mui/material";
+import "./Footer.css";
 
 function Footer() {
   return (
@@ -28,25 +29,21 @@ function Footer() {
                 gutterBottom
                 style={{ color: "white" }}
               >
-                Siga-nos nas redes sociais{" "}
+                Siga-nos nas redes sociais
               </Typography>
             </Box>
             <Box display="flex" alignItems="center" justifyContent="center">
               <a
-                href="https://www.facebook.com/generationbrasil"
+                href="https://github.com/jennifer-cruz"
                 target="_blank"
+                rel="noopener noreferrer"
               >
-                <FacebookIcon style={{ fontSize: 60, color: "white" }} />
+                <GitHubIcon style={{ fontSize: 60, color: "white" }} />
               </a>
               <a
-                href="https://www.instagram.com/generationbrasil/"
+                href="https://www.linkedin.com/in/jennifercruz-/"
                 target="_blank"
-              >
-                <InstagramIcon style={{ fontSize: 60, color: "white" }} />
-              </a>
-              <a
-                href="https://www.linkedin.com/school/generationbrasil/"
-                target="_blank"
+                rel="noopener noreferrer"
               >
                 <LinkedInIcon style={{ fontSize: 60, color: "white" }} />
               </a>
@@ -63,11 +60,11 @@ function Footer() {
                 © 2023 Copyright: Jennifer Cruz
               </Typography>
             </Box>
+            
           </Box>
         </Grid>
       </Grid>
     </>
   );
 }
-
 export default Footer;

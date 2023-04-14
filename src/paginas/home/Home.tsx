@@ -11,7 +11,7 @@ function Home() {
         direction="row"
         justifyContent="center"
         alignItems="center"
-        style={{ backgroundColor: "#3F51B5" }}
+        className="caixa"
       >
         <Grid alignItems="center" item xs={6}>
           <Box paddingX={20}>
@@ -21,7 +21,7 @@ function Home() {
               color="textPrimary"
               component="h3"
               align="center"
-              style={{ color: "white", fontWeight: "bold" }}
+              className="titulo"
             >
               Seja bem vindo(a)!
             </Typography>
@@ -31,36 +31,30 @@ function Home() {
               color="textPrimary"
               component="h5"
               align="center"
-              style={{ color: "white", fontWeight: "bold" }}
+              className="titulo"
             >
               expresse aqui os seus pensamentos e opiniões!
             </Typography>
           </Box>
           <Box display="flex" justifyContent="center">
             <Box marginRight={1}></Box>
-            <Button
-              variant="outlined"
-              style={{
-                borderColor: "white",
-                backgroundColor: "#3F51B5",
-                color: "white",
-              }}
-            >
+            <Button variant="outlined" className="botao">
               Ver Postagens
             </Button>
           </Box>
         </Grid>
         <Grid item xs={6}>
           <img
-            src="https://png.pngtree.com/png-clipart/20230315/ourmid/pngtree-dog-cute-animal-realistic-png-image_6646934.png"
+            src="https://images.pexels.com/photos/5122188/pexels-photo-5122188.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
             alt=""
-            width="800px"
-            height="500px"
+            width="500px"
+            height="700px"
           />
         </Grid>
-        <Grid xs={12} style={{ backgroundColor: "white" }}></Grid>
+        <Grid xs={12} className="postagens"></Grid>
       </Grid>
     </>
   );
 }
+
 export default Home;
