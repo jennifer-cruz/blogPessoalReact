@@ -20,21 +20,29 @@ function Navbar() {
                 home
               </Typography>
             </Box>
-            <Box mx={1} className="cursor">
-              <Typography variant="h6" color="inherit">
-                postagens
-              </Typography>
-            </Box>
-            <Box mx={1} className="cursor">
-              <Typography variant="h6" color="inherit">
-                temas
-              </Typography>
-            </Box>
+
+            <Link to="/postagens" className="text-decorator-none">
+              <Box mx={1} className="cursor">
+                <Typography variant="h6" color="inherit">
+                  postagens
+                </Typography>
+              </Box>
+            </Link>
+
+            <Link to="/temas" className="text-decorator-none">
+              <Box mx={1} className="cursor">
+                <Typography variant="h6" color="inherit">
+                  temas
+                </Typography>
+              </Box>
+            </Link>
+
             <Box mx={1} className="cursor">
               <Typography variant="h6" color="inherit">
                 cadastrar tema
               </Typography>
             </Box>
+
             <Link to="/login" className="text-decorator-none">
               <Box mx={1} className="cursor">
                 <Typography variant="h6" color="inherit">

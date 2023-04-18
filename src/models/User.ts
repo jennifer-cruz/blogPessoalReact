@@ -1,4 +1,5 @@
 interface User {
+    foto: unknown;
     id: number;
     nome: string;
     usuario: string;
