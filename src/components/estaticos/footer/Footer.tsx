@@ -60,7 +60,7 @@ function Footer() {
                 © 2023 Copyright: Jennifer Cruz
               </Typography>
             </Box>
-            
+
           </Box>
         </Grid>
       </Grid>

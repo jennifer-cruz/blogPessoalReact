@@ -1,13 +1,13 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { Card, CardActions, CardContent, Button, Typography } from '@material-ui/core';
-import {Box} from '@mui/material';
+import { Box } from '@mui/material';
 import './ListaPostagem.css';
 
 function ListaPostagens() {
   return (
-   <>
-   <Box m={2} >
+    <>
+      <Box m={2} >
         <Card variant="outlined">
           <CardContent>
             <Typography color="textSecondary" gutterBottom>
@@ -44,7 +44,7 @@ function ListaPostagens() {
           </CardActions>
         </Card>
       </Box>
-   </>
+    </>
   )
 }
 

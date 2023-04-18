@@ -12,23 +12,23 @@ import ListaPostagens from "./components/postagens/listaPostagens/ListaPostagens
 function App() {
   return (
 
-<BrowserRouter>
+    <BrowserRouter>
       <Navbar />
-      <div style={{minHeight: '85vh'}}>
+      <div style={{ minHeight: '85vh' }}>
         <Routes>
           <Route path='/' element={<Login />} />
           <Route path='/login' element={<Login />} />
           <Route path='/home' element={<Home />} />
           <Route path="/cadastroUsuario" element={<CadastroUsuario />} />
-        <Route path="/temas" element={<ListaTemas />} />
-        <Route path="/postagens" element={<ListaPostagens />} />
+          <Route path="/temas" element={<ListaTemas />} />
+          <Route path="/postagens" element={<ListaPostagens />} />
         </Routes>
       </div>
       <Footer />
     </BrowserRouter>
 
 
-  
+
   );
 }
 

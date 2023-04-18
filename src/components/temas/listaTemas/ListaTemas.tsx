@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import {Card, CardActions, CardContent, Button, Typography } from '@material-ui/core';
-import {Box} from '@mui/material';
+import { Card, CardActions, CardContent, Button, Typography } from '@material-ui/core';
+import { Box } from '@mui/material';
 import './ListaTemas.css';
 
 function ListaTemas() {
@@ -38,7 +38,7 @@ function ListaTemas() {
           </CardActions>
         </Card>
       </Box>
-    
+
     </>
   )
 }

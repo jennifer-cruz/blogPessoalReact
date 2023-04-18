@@ -62,7 +62,9 @@ function CadastroUsuario() {
       setUser({
         ...user,
         senha: ''
-      })}}
+      })
+    }
+  }
 
   return (
     <Grid container direction='row' justifyContent='center' alignItems='center'>
