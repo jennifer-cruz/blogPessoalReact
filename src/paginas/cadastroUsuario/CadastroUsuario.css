@@ -1,0 +1,20 @@
+.imagem2 {
+  background-image: url(https://images.pexels.com/photos/320014/pexels-photo-320014.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1);
+  background-repeat: no-repeat;
+  width: 90vh;
+  min-height: 90vh;
+  background-size: cover;
+  background-position: center;
+}
+
+.textos2 {
+    font-weight: bold !important;
+}
+
+.btnCancelar{
+margin-right: 20px !important;
+}
+
+.btnCadastrar {
+
+}
