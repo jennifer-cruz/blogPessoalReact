@@ -8,7 +8,7 @@ import './ListaPostagem.css';
 import useLocalStorage from 'react-use-localstorage';
 import { useNavigate } from 'react-router-dom'
 
-function ListaPostagens() {
+function ListaPostagem() {
   const [posts, setPosts] = useState<Postagens[]>([])
   const [token, setToken] = useLocalStorage('token');
   let navigate = useNavigate();
@@ -82,4 +82,4 @@ function ListaPostagens() {
   )
 }
 
-export default ListaPostagens;
+export default ListaPostagem;
