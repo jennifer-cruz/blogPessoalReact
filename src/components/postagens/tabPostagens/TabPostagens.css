@@ -1,3 +1,9 @@
 .titulo {
   font-weight: bold;
 }
+
+.tabPost {
+  background-color: rgb(64, 98, 21);
+  color: white;
+}
+

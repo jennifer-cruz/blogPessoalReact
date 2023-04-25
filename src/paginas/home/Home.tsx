@@ -1,12 +1,29 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Typography, Grid, Button } from '@material-ui/core';
 import { Box } from '@mui/material';
 import './Home.css'
 import ListaPostagens from '../../components/postagens/listaPostagens/ListaPostagem';
 import TabPostagens from '../../components/postagens/tabPostagens/TabPostagens';
 import ModalPostagem from '../../components/postagens/modalPostagem/ModalPostagem';
+import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { TokenState } from '../../store/tokens/tokensReducer';
+import {Link} from 'react-router-dom'
 
 function Home() {
+  const history = useNavigate();
+  const token = useSelector<TokenState, TokenState["tokens"]>(
+
+    (state) => state.tokens
+  );
+  useEffect(() => {
+    if (token == "") {
+      alert("você precisa estar logado")
+      history('/login')
+    }
+  }, [token])
+
+
   return (
     <>
       <Grid
@@ -14,27 +31,23 @@ function Home() {
         direction="row"
         justifyContent="center"
         alignItems="center"
-        style={{ backgroundColor: 'var(--blue-600)' }}
+
       >
         <Grid alignItems="center" item xs={6}>
           <Box paddingX={20}  >
             <Typography
               variant="h3"
               gutterBottom
-              color="textPrimary"
               component="p"
               align="center"
-              style={{ color: 'white', fontWeight: 'bold' }}
             >
               Seja bem vindo(a)!
             </Typography>
             <Typography
               variant="h5"
               gutterBottom
-              color="textPrimary"
               component="h5"
               align="center"
-              style={{ color: 'white', fontWeight: 'bold' }}
             >
               expresse aqui os seus pensamentos e opiniões!
             </Typography>
@@ -43,26 +56,20 @@ function Home() {
             <Box marginRight={1}>
               <ModalPostagem />
             </Box>
-            <Button
-              variant="outlined"
-              style={{
-                borderColor: 'white',
-                backgroundColor: 'var(--blue-600)',
-                color: 'white',
-              }}
-            >
+            <Link to='/postagens'>
+            <Button className='btnVerPost'>
               Ver Postagens
             </Button>
+            </Link>
           </Box>
         </Grid>
-        <Grid item xs={6}>
+        <Grid item xs={6} className='imgHome'>
           <img
-            src="https://i.imgur.com/XEmGzkd.png"
+            src="https://i.imgur.com/2PvUhkl.jpg"
             alt=""
-            className='fotoHome'
           />
         </Grid>
-        <Grid xs={12} style={{ backgroundColor: 'white' }}>
+        <Grid xs={12} >
           <TabPostagens />
         </Grid>
       </Grid>

@@ -1,8 +1,17 @@
-.cursor {
+.cursorNavbar {
+  text-decoration: none;
   cursor: pointer;
-  color: white;
+  color: rgb(245, 220, 251);
 }
 
-.text-decorator-none {
+.cursorBlogPessoal {
   text-decoration: none;
+  cursor: pointer;
+  color: rgb(191, 235, 229);
 }
+
+
+.cursorSair {
+  color: rgb(243, 249, 228);
+}
+

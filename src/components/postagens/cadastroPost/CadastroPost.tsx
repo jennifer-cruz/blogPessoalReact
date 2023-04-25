@@ -1,35 +1,48 @@
-import React, { useState, useEffect, ChangeEvent } from 'react';
-import { Button, Container, Typography, TextField, FormControl, InputLabel, Select, MenuItem, FormHelperText } from '@mui/material';
-import './CadastroPost.css';
-import { Postagem } from '../../../models/Postagem';
-import { useNavigate, useParams } from 'react-router-dom';
-import { Tema } from '../../../models/Tema';
-import useLocalStorage from 'react-use-localstorage';
-import { getAll, getId, put, post } from '../../../service/Service';
+import React, { useState, useEffect, ChangeEvent } from "react";
+import {
+  Button,
+  Container,
+  Typography,
+  TextField,
+  FormControl,
+  InputLabel,
+  Select,
+  MenuItem,
+  FormHelperText,
+} from "@mui/material";
+import "./CadastroPost.css";
+import { Postagem } from "../../../models/Postagem";
+import { useNavigate, useParams } from "react-router-dom";
+import { Tema } from "../../../models/Tema";
+import { getAll, getId, put, post, buscaId } from "../../../service/Service";
+import { useSelector } from "react-redux";
+import { TokenState } from "../../../store/tokens/tokensReducer";
 
 function CadastroPostagem() {
   const history = useNavigate();
-  const [token, setToken] = useLocalStorage('token');
+  const token = useSelector<TokenState, TokenState["tokens"]>(
+    (state) => state.tokens
+  );
   const { id } = useParams<{ id: string }>();
   const [temas, setTemas] = useState<Tema[]>([]);
 
   const [postagem, setPostagem] = useState<Postagem>({
     id: 0,
-    titulo: '',
-    texto: '',
-    data: '',
+    titulo: "",
+    texto: "",
+    data: "",
     tema: null,
   });
 
   const [tema, setTema] = useState<Tema>({
     id: 0,
-    descricao: '',
+    descricao: "",
   });
 
   useEffect(() => {
-    if (token === '') {
-      alert('sem token não rola');
-      history('/login');
+    if (token === "") {
+      alert("sem token não rola");
+      history("/login");
     }
   });
 
@@ -42,7 +55,7 @@ function CadastroPostagem() {
   }
 
   async function getAllTemas() {
-    await getAll('/temas', setTemas, {
+    await getAll("/temas", setTemas, {
       headers: {
         Authorization: token,
       },
@@ -73,37 +86,38 @@ function CadastroPostagem() {
 
   async function onSubmit(event: ChangeEvent<HTMLFormElement>) {
     event.preventDefault();
+    console.log({ postagem });
 
     if (id !== undefined) {
       try {
-        await put('/postagens', postagem, setPostagem, {
+        await put("/postagens", postagem, setPostagem, {
           headers: {
             Authorization: token,
           },
         });
-        alert('Postagem atualizada com sucesso');
-        history('/postagens')
+        alert("Postagem atualizada com sucesso");
+        history("/postagens");
       } catch (error) {
-        alert('Falha ao atualizar a postagem');
+        alert("Falha ao atualizar a postagem");
       }
     } else {
       try {
-        await post('/postagens', postagem, setPostagem, {
+        await post("/postagens", postagem, setPostagem, {
           headers: {
             Authorization: token,
           },
         });
-        alert('Postagem cadastrada com sucesso');
-        history('/postagens')
+        alert("Postagem cadastrada com sucesso");
+        history("/postagens");
       } catch (error) {
-        alert('Falha ao cadastrar a postagem');
+        alert("Falha ao cadastrar a postagem");
       }
     }
   }
 
   return (
     <>
-      <Container maxWidth={'sm'}>
+      <Container maxWidth={"sm"}>
         <form className="cadastroPost" onSubmit={onSubmit}>
           <Typography marginTop={4} variant="h3" align="center">
             Cadastrar postagem
@@ -134,6 +148,28 @@ function CadastroPostagem() {
           />
 
           <FormControl>
+            <InputLabel id="demo-simple-select-helper-label">Tema </InputLabel>
+            <Select
+              labelId="demo-simple-select-helper-label"
+              id="demo-simple-select-helper"
+              onChange={(e) =>
+                buscaId(`/temas/${e.target.value}`, setTema, {
+                  headers: {
+                    Authorization: token,
+                  },
+                })
+              }>
+              {temas.map((tema) => (
+                <MenuItem value={tema.id}>{tema.descricao}</MenuItem>
+              ))}
+            </Select>
+            <FormHelperText>Escolha um tema para a postagem</FormHelperText>
+            <Button type="submit" variant="contained" color="primary">
+              Finalizar
+            </Button>
+          </FormControl>
+
+          {/* <FormControl>
             <InputLabel>Tema</InputLabel>
             <Select
               variant="standard"
@@ -148,10 +184,10 @@ function CadastroPostagem() {
               ))}
             </Select>
             <FormHelperText>Escolha um tema para a sua postagem</FormHelperText>
-          </FormControl>
-          <Button variant="contained" color="primary" type='submit' disabled={tema.id === 0}>
+          </FormControl> */}
+          {/* <Button variant="contained" color="primary" type='submit' disabled={tema.id === 0}>
             {tema.id === 0 ? 'selecione um tema' : 'cadastrar'}
-          </Button>
+          </Button> */}
         </form>
       </Container>
     </>

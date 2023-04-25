@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export const api = axios.create({
-  baseURL: 'https://blogpessoal-nktn.onrender.com',
+  baseURL: 'https://blogdothiagofaccipieri.onrender.com',
 });
 
 export const login = async (url: any, dados: any, setDados: any) => {
@@ -9,10 +9,10 @@ export const login = async (url: any, dados: any, setDados: any) => {
   setDados(resposta.data.token);
 };
 
-export const cadastrarUsuario = async (url: any, dados: any, setDados: any) => {
-  const resposta = await api.post(url, dados);
-  setDados(resposta.data);
-};
+export const cadastroUsuario = async (url: any, dados: any, setDado: any) => {
+  const resposta = await api.post(url, dados)
+  setDado(resposta.data)
+}
 
 // a tipagem do headers seria um Object
 export const getAll = async (url: any, setDados: any, headers: any) => {
@@ -25,8 +25,8 @@ export const getId = async (url: any, setDados: any, headers: any) => {
   setDados(resposta.data);
 };
 
-export const buscaId = async(url: any,setDado: any, header: any) => { 
-  const resposta = await api.get(url,header)
+export const buscaId = async(url: any,setDado: any, headers: any) => { 
+  const resposta = await api.get(url,headers)
   setDado(resposta.data)
 }
 

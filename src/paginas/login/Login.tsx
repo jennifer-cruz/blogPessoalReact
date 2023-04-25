@@ -1,18 +1,19 @@
-import React, { ChangeEvent, useEffect, useState } from 'react'
-import './Login.css'
-import { Box, Typography, Button, Grid, TextField } from '@mui/material'
-import { Link, useNavigate } from 'react-router-dom'
-import UsuarioLogin from '../../models/UserLogin'
-import { login } from '../../service/Service'
-import useLocalStorage from 'react-use-localstorage'
+import React, { ChangeEvent, useEffect, useState } from 'react';
+import './Login.css';
+import { Box, Typography, Button, Grid, TextField } from '@mui/material';
+import { Link, useNavigate } from 'react-router-dom';
+import UsuarioLogin from '../../models/UserLogin';
+import { login } from '../../service/Service';
+import { useDispatch } from 'react-redux';
+import { addToken } from '../../store/tokens/actions';
 
 function Login() {
 
   // Hook responsável por navegar o usuário de uma tela para outra, sem precisar de um Link
   const history = useNavigate()
-
+  const dispatch = useDispatch();
   // Hook customizado, para adicionar informações no LocalStorage do navegador
-  const [token, setToken] = useLocalStorage('token')
+  const [token, setToken] = useState('')
 
   // Hook para controle de estado da Váriavel de UsuarioLogin, irá manter os dados de email e senha durante o preenchimento do formulário pelo usuário
   const [userLogin, setUserLogin] = useState<UsuarioLogin>({
@@ -39,7 +40,7 @@ function Login() {
       await login('/usuarios/logar', userLogin, setToken)
       alert('Usuario logado com sucesso')
 
-    } catch(error) {
+    } catch (error) {
       console.log(error);
       alert('Usuário ou senha inválidos')
     }
@@ -47,7 +48,8 @@ function Login() {
 
   // Hook de controle de "efeito colateral" que irá ficar monitorando a variavel token, e quando ela mudar, vai cair no if... caso seja verdadeiro, navega nosso usuário para a tela de Home
   useEffect(() => {
-    if(token !== '') {
+    if (token !== '') {
+      dispatch(addToken(token));
       history('/home')
     }
   }, [token])
@@ -79,13 +81,13 @@ function Login() {
                   margin='normal'
                   fullWidth />
                 <Box marginY={2}>
-                  
-                    <Button type='submit' size='large' variant='contained' fullWidth>Logar</Button>
-                  
+
+                  <Button type='submit' size='large' variant='contained' fullWidth>Logar</Button>
+
                 </Box>
-            </form>
-            <hr />
-            <Typography marginTop={2} align='center' variant="body1">Ainda não tem uma conta? <Link to='/cadastrarUsuario' className='linkLogin'>Cadastre-se aqui</Link></Typography>
+              </form>
+              <hr />
+              <Typography marginTop={2} align='center' variant="body1">Ainda não tem uma conta? <Link to='/cadastroUsuario' className='linkLogin'>Cadastre-se aqui</Link></Typography>
             </Grid>
           </Box>
         </Grid>
