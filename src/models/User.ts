@@ -1,9 +1,7 @@
-interface User {
-    foto: unknown;
+export interface User {
     id: number;
     nome: string;
     usuario: string;
-    senha: string;
-}
-
-export default User;
+    foto: string;
+    senha: string
+  }

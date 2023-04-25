@@ -1,79 +1,98 @@
-import React, { useState, useEffect, ChangeEvent } from 'react';
-import { Grid, Typography, TextField, Button } from '@material-ui/core';
-import { Link, useNavigate } from 'react-router-dom';
-import useLocalStorage from 'react-use-localstorage';
-import { login } from '../../services/Service';
-import { Box } from "@mui/material";
-import UserLogin from '../../models/UserLogin';
-import './Login.css';
+import React, { ChangeEvent, useEffect, useState } from 'react'
+import './Login.css'
+import { Box, Typography, Button, Grid, TextField } from '@mui/material'
+import { Link, useNavigate } from 'react-router-dom'
+import UsuarioLogin from '../../models/UserLogin'
+import { login } from '../../service/Service'
+import useLocalStorage from 'react-use-localstorage'
 
 function Login() {
-    let navigate = useNavigate();
-    const [token, setToken] = useLocalStorage('token');
-    const [userLogin, setUserLogin] = useState<UserLogin>(
-        {
-            id: 0,
-            usuario: '',
-            senha: '',
-            token: ''
-        }
-    )
 
-    function updatedModel(e: ChangeEvent<HTMLInputElement>) {
+  // Hook responsável por navegar o usuário de uma tela para outra, sem precisar de um Link
+  const history = useNavigate()
 
-        setUserLogin({
-            ...userLogin,
-            [e.target.name]: e.target.value
-        })
+  // Hook customizado, para adicionar informações no LocalStorage do navegador
+  const [token, setToken] = useLocalStorage('token')
+
+  // Hook para controle de estado da Váriavel de UsuarioLogin, irá manter os dados de email e senha durante o preenchimento do formulário pelo usuário
+  const [userLogin, setUserLogin] = useState<UsuarioLogin>({
+    id: 0,
+    nome: '',
+    usuario: '',
+    foto: '',
+    senha: '',
+    token: ''
+  })
+
+  // função responsável por pegar o que foi digitado no campo, e atualizar o estado do Usuario
+  function updateModel(event: ChangeEvent<HTMLInputElement>) {
+    setUserLogin({
+      ...userLogin,
+      [event.target.name]: event.target.value
+    })
+  }
+
+  // Função responsável por enviar o pedido de login para a service do front, e consequentemente, para o backend. É uma função assincrona, pois precisa aguardar o backend devolver alguma resposta
+  async function onSubmit(event: ChangeEvent<HTMLFormElement>) {
+    event.preventDefault()
+    try {
+      await login('/usuarios/logar', userLogin, setToken)
+      alert('Usuario logado com sucesso')
+
+    } catch(error) {
+      console.log(error);
+      alert('Usuário ou senha inválidos')
     }
+  }
 
-    useEffect(() => {
-        if (token != '') {
-            navigate('/home')
-        }
-    }, [token])
-
-    async function onSubmit(e: ChangeEvent<HTMLFormElement>) {
-        e.preventDefault();
-        try {
-            await login(`/usuarios/logar`, userLogin, setToken)
-
-            alert('Usuário logado com sucesso!');
-        } catch (error) {
-            alert('Dados do usuário inconsistentes. Erro ao logar!');
-        }
+  // Hook de controle de "efeito colateral" que irá ficar monitorando a variavel token, e quando ela mudar, vai cair no if... caso seja verdadeiro, navega nosso usuário para a tela de Home
+  useEffect(() => {
+    if(token !== '') {
+      history('/home')
     }
+  }, [token])
 
-    return (
-        <Grid container direction='row' justifyContent='center' alignItems='center'>
-            <Grid alignItems='center' xs={6}>
-                <Box paddingX={20}>
-                    <form onSubmit={onSubmit}>
-                        <Typography variant='h3' gutterBottom color='textPrimary' component='h3' align='center' className='textos1'>Entrar</Typography>
-                        <TextField value={userLogin.usuario} onChange={(e: ChangeEvent<HTMLInputElement>) => updatedModel(e)} id='usuario' label='usuário' variant='outlined' name='usuario' margin='normal' fullWidth />
-                        <TextField value={userLogin.senha} onChange={(e: ChangeEvent<HTMLInputElement>) => updatedModel(e)} id='senha' label='senha' variant='outlined' name='senha' margin='normal' type='password' fullWidth />
-                        <Box marginTop={2} textAlign='center'>
-                            <Button type='submit' variant='contained' color='primary'>
-                                Logar
-                            </Button>
-                        </Box>
-                    </form>
-                    <Box display='flex' justifyContent='center' marginTop={2}>
-                        <Box marginRight={1}>
-                            <Typography variant='subtitle1' gutterBottom align='center'>Não tem uma conta?</Typography>
-                        </Box>
-                        <Link to='/cadastrousuario'>
-                            <Typography variant='subtitle1' gutterBottom align='center' className='textos1'>Cadastre-se</Typography>
-                        </Link>
+  return (
+    <>
+      <Grid container alignItems={'center'}>
+        <Grid item xs={6} justifyContent='center' >
+          <Box display='flex' justifyContent={'center'} >
+            <Grid item xs={6} >
+              <form onSubmit={onSubmit}>
+                <Typography variant='h3' align='center' gutterBottom fontWeight='bold'>Entrar</Typography>
+                <TextField
+                  variant='outlined'
+                  name='usuario'
+                  value={userLogin.usuario}
+                  onChange={(event: ChangeEvent<HTMLInputElement>) => updateModel(event)}
+                  label='Usuário'
+                  margin='normal'
+                  fullWidth />
 
-                    </Box>
+                <TextField
+                  type='password'
+                  name='senha'
+                  value={userLogin.senha}
+                  onChange={(event: ChangeEvent<HTMLInputElement>) => updateModel(event)}
+                  variant='outlined'
+                  label='Senha'
+                  margin='normal'
+                  fullWidth />
+                <Box marginY={2}>
+                  
+                    <Button type='submit' size='large' variant='contained' fullWidth>Logar</Button>
+                  
                 </Box>
+            </form>
+            <hr />
+            <Typography marginTop={2} align='center' variant="body1">Ainda não tem uma conta? <Link to='/cadastrarUsuario' className='linkLogin'>Cadastre-se aqui</Link></Typography>
             </Grid>
-            <Grid xs={6} className='imagem'>
-
-            </Grid>
+          </Box>
         </Grid>
-    );
+        <Grid item xs={6} className='imagemLogin'></Grid>
+      </Grid>
+    </>
+  )
 }
 
 export default Login;
