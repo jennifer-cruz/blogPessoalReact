@@ -1,7 +1,7 @@
 import React, { useState, useEffect, ChangeEvent } from 'react';
 import { useNavigate } from 'react-router-dom';
-import User from '../../models/User';
-import { cadastroUsuario } from '../../service/Service';
+import { User } from '../../models/User';
+import  { cadastrarUsuario }  from '../../service/Service';
 import { Grid, Typography, Button, TextField } from '@material-ui/core';
 import { Box } from '@mui/material';
 import { Link } from 'react-router-dom';
@@ -51,7 +51,7 @@ function CadastroUsuario() {
     e.preventDefault()
     if (confirmarSenha === user.senha) {
       try {
-        await cadastroUsuario('/usuarios/cadastrar', user, setUserResult)
+        await cadastrarUsuario('/usuarios/cadastrar', user, setUserResult)
         alert('Usuário cadastrado com sucesso')
       } catch (error) {
         alert('Por favor, verifique os campos')
