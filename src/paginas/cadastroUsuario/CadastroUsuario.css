@@ -1,19 +1,25 @@
 .imagem2 {
-  background-image: url(https://images.pexels.com/photos/320014/pexels-photo-320014.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1);
+  background-image: url(https://i.imgur.com/PPuO3Ka.jpg);
   background-repeat: no-repeat;
-  width: 90vh;
-  min-height: 90vh;
+  width: 100vh;
+  min-height: 100vh;
   background-size: cover;
   background-position: center;
 }
 
 .textos2 {
   font-weight: bold !important;
+  color: #977343 !important;
 }
 
 .btnCancelar {
   margin-right: 20px !important;
+  color: #74542b !important;
+  background-color: #D2B492 !important;
 }
 
 .btnCadastrar {
+  margin-right: 20px !important;
+  color: white !important;
+  background-color: #977343 !important;
 }

@@ -4,3 +4,14 @@
   gap: 2rem;
   padding: 2rem;
 }
+
+
+.tituloModal {
+  color: #8C512E !important;
+}
+
+.btnFinalizar {
+  border: 1px solid #8C512E !important;
+  background-color: #8C512E !important;
+  padding: 3rem;
+}

@@ -61,7 +61,7 @@ function Login() {
           <Box display='flex' justifyContent={'center'} >
             <Grid item xs={6} >
               <form onSubmit={onSubmit}>
-                <Typography variant='h3' align='center' gutterBottom fontWeight='bold'>Entrar</Typography>
+                <Typography variant='h3' align='center' className='txtEntrar' >Entrar</Typography>
                 <TextField
                   variant='outlined'
                   name='usuario'
@@ -82,16 +82,19 @@ function Login() {
                   fullWidth />
                 <Box marginY={2}>
 
-                  <Button type='submit' size='large' variant='contained' fullWidth>Logar</Button>
+                  <Button type='submit' size='large' className='btnLogar' fullWidth>Logar</Button>
 
                 </Box>
               </form>
               <hr />
-              <Typography marginTop={2} align='center' variant="body1">Ainda não tem uma conta? <Link to='/cadastroUsuario' className='linkLogin'>Cadastre-se aqui</Link></Typography>
+              <Typography marginTop={2} align='center' >Ainda não tem uma conta? <Link to='/cadastroUsuario' className='linkCadastro'>Cadastre-se aqui</Link></Typography>
             </Grid>
           </Box>
         </Grid>
-        <Grid item xs={6} className='imagemLogin'></Grid>
+        <Grid item xs={6} className='imgLogin'>
+          
+
+        </Grid>
       </Grid>
     </>
   )

@@ -22,7 +22,7 @@ function Footer() {
       alignItems="center"
     >
       <Grid alignItems="center" item xs={12}>
-        <Box style={{ backgroundColor: "#3F5109", height: "120px" }}>
+        <Box style={{ backgroundColor: "#D2B492", height: "120px" }}>
           <Box
             paddingTop={1}
             display="flex"
@@ -33,7 +33,7 @@ function Footer() {
               variant="h5"
               align="center"
               gutterBottom
-              style={{ color: "white" }}
+              style={{ color: "#977343" }}
             >
               Siga-nos nas redes sociais
             </Typography>
@@ -44,24 +44,24 @@ function Footer() {
               target="_blank"
               rel="noopener noreferrer"
             >
-              <GitHubIcon style={{ fontSize: 60, color: "white" }} />
+              <GitHubIcon style={{ fontSize: 60, color: "#977343" }} />
             </a>
             <a
               href="https://www.linkedin.com/in/jennifercruz-/"
               target="_blank"
               rel="noopener noreferrer"
             >
-              <LinkedInIcon style={{ fontSize: 60, color: "white" }} />
+              <LinkedInIcon style={{ fontSize: 60, color: "#977343" }} />
             </a>
           </Box>
         </Box>
-        <Box style={{ backgroundColor: "#303F67", height: "60px" }}>
+        <Box style={{ backgroundColor: "#977343", height: "40px" }}>
           <Box paddingTop={1}>
             <Typography
               variant="subtitle2"
               align="center"
               gutterBottom
-              style={{ color: "white" }}
+              style={{ color: "#D2B492" }}
             >
               © 2023 Copyright: Jennifer Cruz
             </Typography>

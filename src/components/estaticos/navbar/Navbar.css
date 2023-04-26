@@ -1,17 +1,37 @@
 .cursorNavbar {
   text-decoration: none;
   cursor: pointer;
-  color: rgb(245, 220, 251);
+  color: #8C512E;
+  font-weight: bold !important;
 }
 
-.cursorBlogPessoal {
+/* .cursorBlogPessoal {
   text-decoration: none;
   cursor: pointer;
-  color: rgb(191, 235, 229);
-}
+  color: #151008;
+  display: flex !important;
+ justify-content:left !important;
+} */
 
 
 .cursorSair {
-  color: rgb(243, 249, 228);
+  text-decoration: none;
+  cursor: pointer;
+  color: #F2F2F2;
+  display: flex !important;
+  justify-content: right !important;
 }
 
+
+.toolbarTxt {
+  display: flex !important;
+ justify-content: center !important;
+ background-color: #D2B492 !important;
+}
+
+
+.pagNavbar {
+  display: flex !important;
+ justify-content: center !important;
+ font-weight: bold !important;
+}

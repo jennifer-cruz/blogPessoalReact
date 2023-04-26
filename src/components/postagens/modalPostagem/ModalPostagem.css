@@ -1,6 +1,7 @@
 .btnModal{
-  border: 1px solid rgb(12, 109, 97) !important;
-  background-color: rgb(201, 242, 232) !important;
+  border: 1px solid #D2B492 !important;
+  background-color: #D2B492 !important;
+  color: #8C512E;
   }
   
   .modal {
@@ -9,9 +10,9 @@
     left: 50%;
     transform: translate(-50%, -50%);
     padding: 1rem;
-    background-color: #f1f6f9;
+    background-color: #D2B492;
     width: 45vw;
-    border: 2px solid rgb(134, 206, 211);
+    border: 2px solid #8C512E;
     box-shadow: 5px 3px 10px #e1ebf233;
     border-radius: 1rem;
   }

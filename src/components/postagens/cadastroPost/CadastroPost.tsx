@@ -119,7 +119,7 @@ function CadastroPostagem() {
     <>
       <Container maxWidth={"sm"}>
         <form className="cadastroPost" onSubmit={onSubmit}>
-          <Typography marginTop={4} variant="h3" align="center">
+          <Typography marginTop={4} variant="h3" align="center" className="tituloModal">
             Cadastrar postagem
           </Typography>
           <TextField
@@ -164,7 +164,8 @@ function CadastroPostagem() {
               ))}
             </Select>
             <FormHelperText>Escolha um tema para a postagem</FormHelperText>
-            <Button type="submit" variant="contained" color="primary">
+            <br />
+            <Button type="submit" className="btnFinalizar" >
               Finalizar
             </Button>
           </FormControl>

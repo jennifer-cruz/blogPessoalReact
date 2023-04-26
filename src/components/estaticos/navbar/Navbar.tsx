@@ -28,60 +28,58 @@ function Navbar() {
 
   if (token !== "") {
     navbarComponent = <AppBar position="static">
-      <Toolbar  >
-        <Box>
+      <Toolbar className="toolbarTxt" >
+        {/* <Box > 
           <Link to="/home" className="cursorBlogPessoal">
-            <Typography variant="h5" >
+            <Typography  >
               BlogPessoal
             </Typography>
           </Link>
-        </Box>
+        </Box> */}
 
-        <Box display="flex" justifyContent="start">
+        <Box className="pagNavbar"  >
           <Box mx={1} >
             <Link to="/home" className="cursorNavbar">
-              <Typography variant="h6" >
-                home
+              <Typography  >
+                 HOME 🐶
               </Typography>
             </Link>
           </Box>
 
-          <Link to="/postagens" >
             <Box mx={1} >
               <Link to="/postagens" className="cursorNavbar">
-                <Typography variant="h6" >
-                  postagens
+                <Typography >
+                   POSTAGENS 🐶
                 </Typography>
               </Link>
             </Box>
-          </Link>
-
-          <Link to="/temas" >
+          
             <Box mx={1} >
               <Link to="/temas" className="cursorNavbar">
-                <Typography variant="h6" >
-                  temas
+                <Typography >
+                  TEMAS 🐶
                 </Typography>
               </Link>
             </Box>
-          </Link>
 
           <Box mx={1} >
             <Link to="/cadastrarTema" className="cursorNavbar">
-              <Typography variant="h6" >
-                cadastrar tema
+              <Typography  >
+                CADASTRAR TEMA 🐶
               </Typography>
             </Link>
           </Box>
 
-          <Link to="/login" >
-            <Box mx={1} onClick={logout} className="cursorSair">
-
-              <Typography variant="h6" >
-                logout
+         
+            <Box mx={1} onClick={logout} >
+            <Link to="/login" className="cursorSair">
+              <Typography  >
+                LOGOUT
               </Typography>
+              </Link>
             </Box>
-          </Link>
+     
+          
         </Box>
       </Toolbar>
     </AppBar>

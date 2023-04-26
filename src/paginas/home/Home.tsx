@@ -31,14 +31,14 @@ function Home() {
         direction="row"
         justifyContent="center"
         alignItems="center"
-
+className='caixa'
       >
         <Grid alignItems="center" item xs={6}>
           <Box paddingX={20}  >
             <Typography
               variant="h3"
               gutterBottom
-              component="p"
+              className='txtWelcome'
               align="center"
             >
               Seja bem vindo(a)!
@@ -48,6 +48,7 @@ function Home() {
               gutterBottom
               component="h5"
               align="center"
+              className='txtOpiniao'
             >
               expresse aqui os seus pensamentos e opiniões!
             </Typography>
@@ -65,7 +66,7 @@ function Home() {
         </Grid>
         <Grid item xs={6} className='imgHome'>
           <img
-            src="https://i.imgur.com/2PvUhkl.jpg"
+            src=""
             alt=""
           />
         </Grid>

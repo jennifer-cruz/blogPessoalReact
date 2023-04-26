@@ -22,18 +22,18 @@ function App() {
       <Navbar />
       <div style={{ minHeight: '85vh' }}>
         <Routes>
-          <Route path='/' element={<Login />} />
-          <Route path='/login' element={<Login />} />
-          <Route path='/home' element={<Home />} />
-          <Route path="/cadastroUsuario" element={<CadastroUsuario />} />
-          <Route path="/temas" element={<ListaTemas />} />
-          <Route path="/postagens" element={<ListaPostagens />} />
-          <Route path="/editarPostagem" element={<CadastroPostagem />} />
-          <Route path="/editarPostagem/:id" element={<CadastroPostagem />} />
-          <Route path="/editarTema" element={<CadastroTema />} />
-          <Route path="/editarTema/:id" element={<CadastroTema />} />
-          <Route path="/apagarPostagem/:id" element={<DeletarPostagem />} />
-          <Route path="/deletarTema/:id" element={<DeletarTema />} />
+        <Route path="/" element={<Login />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/home" element={<Home />} />
+            <Route path="/cadastroUsuario" element={<CadastroUsuario />} />
+            <Route path="/temas" element={<ListaTemas />} />
+            <Route path="/postagens" element={<ListaPostagens />} />
+            <Route path="/cadastrarPostagem" element={<CadastroPostagem />} />
+            <Route path="/editarPostagem/:id" element={<CadastroPostagem />} />
+            <Route path="/apagarPostagem/:id" element={<DeletarPostagem />} />
+            <Route path="/cadastrarTema" element={<CadastroTema />} />
+            <Route path="/editarTema/:id" element={<CadastroTema />} />
+            <Route path="/deletarTema/:id" element={<DeletarTema />} />
         </Routes>
       </div>
       <Footer />
