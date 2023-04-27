@@ -9,6 +9,7 @@ import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { TokenState } from '../../store/tokens/tokensReducer';
 import {Link} from 'react-router-dom'
+import {toast} from 'react-toastify'
 
 function Home() {
   const history = useNavigate();
@@ -18,7 +19,16 @@ function Home() {
   );
   useEffect(() => {
     if (token == "") {
-      alert("você precisa estar logado")
+      toast.error('🐶 Você precisa estar logado 🐶', {
+        position: "top-left",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+      })
       history('/login')
     }
   }, [token])

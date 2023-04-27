@@ -6,6 +6,7 @@ import { Grid, Typography, Button, TextField } from '@material-ui/core';
 import { Box } from '@mui/material';
 import { Link } from 'react-router-dom';
 import './CadastroUsuario.css';
+import { toast } from 'react-toastify'
 
 function CadastroUsuario() {
 
@@ -53,13 +54,31 @@ function CadastroUsuario() {
     e.preventDefault()
     if (confirmarSenha == user.senha) {
       cadastroUsuario(`/usuarios/cadastrar`, user, setUserResult)
-      alert('Usuario cadastrado com sucesso')
+      toast.success('🐶 Usuario cadastrado com sucesso 🐶', {
+        position: "top-left",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+      })
     } else {
-      alert('Dados inconsistentes. Favor verificar as informações de cadastro.')
+      toast.error('🐶 Dados inconsistentes. Favor verificar as informações de cadastro. 🐶', {
+        position: "top-left",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+      })
     }
   }
   return (
-    <Grid container direction='row' justifyContent='center' alignItems='center'>
+    <Grid container direction='row' justifyContent='center' alignItems='center' className='fundoCadastro'>
       <Grid item xs={6} className='imagem2'></Grid>
       <Grid item xs={6} alignItems='center'>
         <Box paddingX={10}>

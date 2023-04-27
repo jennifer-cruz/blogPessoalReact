@@ -6,6 +6,7 @@ import UsuarioLogin from '../../models/UserLogin';
 import { login } from '../../service/Service';
 import { useDispatch } from 'react-redux';
 import { addToken } from '../../store/tokens/actions';
+import {toast} from 'react-toastify'
 
 function Login() {
 
@@ -38,11 +39,29 @@ function Login() {
     event.preventDefault()
     try {
       await login('/usuarios/logar', userLogin, setToken)
-      alert('Usuario logado com sucesso')
+      toast.success('🐶 Usuario logado com sucesso 🐶', {
+        position: "top-left",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+      })
 
     } catch (error) {
       console.log(error);
-      alert('Usuário ou senha inválidos')
+      toast.error('🐶 Usuário ou senha inválidos 🐶', {
+        position: "top-left",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+      })
     }
   }
 
@@ -56,7 +75,7 @@ function Login() {
 
   return (
     <>
-      <Grid container alignItems={'center'}>
+      <Grid container alignItems={'center'} className='fundoLogin'>
         <Grid item xs={6} justifyContent='center' >
           <Box display='flex' justifyContent={'center'} >
             <Grid item xs={6} >

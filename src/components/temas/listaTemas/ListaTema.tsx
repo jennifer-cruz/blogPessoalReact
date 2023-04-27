@@ -6,6 +6,7 @@ import './ListaTema.css';
 import { getAll } from '../../../service/Service';
 import { TokenState } from '../../../store/tokens/tokensReducer';
 import { useSelector } from 'react-redux';
+import {toast} from 'react-toastify'
 
 function ListaTemas() {
   const [temas, setTemas] = useState<Tema[]>([]);
@@ -30,6 +31,16 @@ function ListaTemas() {
 
   useEffect(() => {
     if (token === '') {
+      toast.info('🐶 Você precisa estar logado 🐶', {
+        position: "top-left",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+      })
       alert('Sem token não né meu bom');
       history('/login');
     }

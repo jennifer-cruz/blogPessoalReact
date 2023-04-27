@@ -6,6 +6,7 @@ import "./Navbar.css";
 import { TokenState } from "../../../store/tokens/tokensReducer";
 import { useSelector, useDispatch } from 'react-redux';
 import { addToken } from "../../../store/tokens/actions";
+import { toast } from 'react-toastify'
 
 
 function Navbar() {
@@ -20,7 +21,16 @@ function Navbar() {
 
   function logout() {
     dispatch(addToken(''));
-    alert('usuario deslogado com sucesso');
+    toast.info('🐶 Usuário deslogado 🐶', {
+      position: "top-left",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "dark",
+    })
     history('/login');
   }
 
@@ -41,26 +51,26 @@ function Navbar() {
           <Box mx={1} >
             <Link to="/home" className="cursorNavbar">
               <Typography  >
-                 HOME 🐶
+                HOME 🐶
               </Typography>
             </Link>
           </Box>
 
-            <Box mx={1} >
-              <Link to="/postagens" className="cursorNavbar">
-                <Typography >
-                   POSTAGENS 🐶
-                </Typography>
-              </Link>
-            </Box>
-          
-            <Box mx={1} >
-              <Link to="/temas" className="cursorNavbar">
-                <Typography >
-                  TEMAS 🐶
-                </Typography>
-              </Link>
-            </Box>
+          <Box mx={1} >
+            <Link to="/postagens" className="cursorNavbar">
+              <Typography >
+                POSTAGENS 🐶
+              </Typography>
+            </Link>
+          </Box>
+
+          <Box mx={1} >
+            <Link to="/temas" className="cursorNavbar">
+              <Typography >
+                TEMAS 🐶
+              </Typography>
+            </Link>
+          </Box>
 
           <Box mx={1} >
             <Link to="/cadastrarTema" className="cursorNavbar">
@@ -70,16 +80,16 @@ function Navbar() {
             </Link>
           </Box>
 
-         
-            <Box mx={1} onClick={logout} >
+
+          <Box mx={1} onClick={logout} >
             <Link to="/login" className="cursorSair">
               <Typography  >
                 LOGOUT
               </Typography>
-              </Link>
-            </Box>
-     
-          
+            </Link>
+          </Box>
+
+
         </Box>
       </Toolbar>
     </AppBar>
