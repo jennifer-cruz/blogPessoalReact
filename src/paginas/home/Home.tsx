@@ -60,7 +60,7 @@ className='caixa'
               align="center"
               className='txtOpiniao'
             >
-              expresse aqui os seus pensamentos e opiniões!
+              Aqui você encontra postagens incríveis de Doguinhos!
             </Typography>
           </Box>
           <Box display="flex" justifyContent="center">
